@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9236DB6C626F6DA8C33074205D27DD9B"
+               BlueprintIdentifier = "9F66AE18FA7E4669E4290A25ABC79CA0"
                BlueprintName = "Pods-chart"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-chart.a">

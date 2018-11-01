@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0BE63921787CBA006D858F /* NetworkManager+aboutLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0BE62421787CBA006D858F /* NetworkManager+aboutLogin.m */; };
+		0F0BE63A21787CBA006D858F /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0BE62721787CBA006D858F /* NetworkManager.m */; };
+		0F0BE64121787CBA006D858F /* IndicatorManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0BE63721787CBA006D858F /* IndicatorManger.m */; };
+		0F17096A217B16F700C652B4 /* AllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F170968217B16F700C652B4 /* AllViewController.m */; };
+		0F17096B217B16F700C652B4 /* AllViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F170969217B16F700C652B4 /* AllViewController.xib */; };
+		0F17096E217B42F200C652B4 /* MoneyResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17096D217B42F200C652B4 /* MoneyResult.m */; };
+		0FF616E3217F11F7005CA1F4 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616E2217F11F7005CA1F4 /* DataManager.m */; };
+		0FF616F2217F1366005CA1F4 /* FMDBManager+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616E7217F1366005CA1F4 /* FMDBManager+Detail.m */; };
+		0FF616F3217F1366005CA1F4 /* FMDBManager+TableList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616E8217F1366005CA1F4 /* FMDBManager+TableList.m */; };
+		0FF616F4217F1366005CA1F4 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616E9217F1366005CA1F4 /* FileManager.m */; };
+		0FF616F5217F1366005CA1F4 /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616EA217F1366005CA1F4 /* FMDBManager.m */; };
+		0FF616F6217F1366005CA1F4 /* GCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616EE217F1366005CA1F4 /* GCDQueue.m */; };
+		0FF616F7217F1366005CA1F4 /* GCDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616EF217F1366005CA1F4 /* GCDGroup.m */; };
+		0FF616FA217F1448005CA1F4 /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616F9217F1448005CA1F4 /* ListModel.m */; };
+		0FF616FD217F145F005CA1F4 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616FB217F145F005CA1F4 /* DetailModel.m */; };
 		0FF7B115216DE2D700940645 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7B114216DE2D700940645 /* AppDelegate.m */; };
 		0FF7B118216DE2D700940645 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7B117216DE2D700940645 /* ViewController.m */; };
 		0FF7B11B216DE2D700940645 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF7B119216DE2D700940645 /* Main.storyboard */; };
@@ -22,6 +37,12 @@
 		0FF88E6A217082BA00D01E49 /* UIControl+XIBLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF88E65217082BA00D01E49 /* UIControl+XIBLayer.m */; };
 		0FF88E6B217082BA00D01E49 /* UIView+XIBLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF88E66217082BA00D01E49 /* UIView+XIBLayer.m */; };
 		0FF88E6C217082BA00D01E49 /* UIColor+ReadBank.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF88E68217082BA00D01E49 /* UIColor+ReadBank.m */; };
+		0FF90F7E2179CC0A000963C4 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF90F7D2179CC0A000963C4 /* HeadView.m */; };
+		0FF90F802179CC19000963C4 /* HeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FF90F7F2179CC19000963C4 /* HeadView.xib */; };
+		0FF90F842179D4C2000963C4 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF90F822179D4C2000963C4 /* AllTableViewCell.m */; };
+		0FF90F852179D4C2000963C4 /* AllTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FF90F832179D4C2000963C4 /* AllTableViewCell.xib */; };
+		0FF9C3B42188794C0082D994 /* PreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9C3B22188794C0082D994 /* PreViewController.m */; };
+		0FF9C3B52188794C0082D994 /* PreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FF9C3B32188794C0082D994 /* PreViewController.xib */; };
 		0FFAC5F62175CAC200424D5C /* ControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFAC5F52175CAC200424D5C /* ControlView.m */; };
 		0FFAC5F82175CAD600424D5C /* ControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FFAC5F72175CAD600424D5C /* ControlView.xib */; };
 		0FFAC5FB2175CF7600424D5C /* UIView+Xib.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFAC5FA2175CF7600424D5C /* UIView+Xib.m */; };
@@ -48,6 +69,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F0BE62421787CBA006D858F /* NetworkManager+aboutLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetworkManager+aboutLogin.m"; sourceTree = "<group>"; };
+		0F0BE62521787CBA006D858F /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		0F0BE62621787CBA006D858F /* NetworkManager+aboutLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetworkManager+aboutLogin.h"; sourceTree = "<group>"; };
+		0F0BE62721787CBA006D858F /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		0F0BE63721787CBA006D858F /* IndicatorManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorManger.m; sourceTree = "<group>"; };
+		0F0BE63821787CBA006D858F /* IndicatorManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorManger.h; sourceTree = "<group>"; };
+		0F170967217B16F700C652B4 /* AllViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllViewController.h; sourceTree = "<group>"; };
+		0F170968217B16F700C652B4 /* AllViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllViewController.m; sourceTree = "<group>"; };
+		0F170969217B16F700C652B4 /* AllViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllViewController.xib; sourceTree = "<group>"; };
+		0F17096C217B42F200C652B4 /* MoneyResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoneyResult.h; sourceTree = "<group>"; };
+		0F17096D217B42F200C652B4 /* MoneyResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoneyResult.m; sourceTree = "<group>"; };
+		0FF616E1217F11F7005CA1F4 /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		0FF616E2217F11F7005CA1F4 /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		0FF616E5217F1366005CA1F4 /* FMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBManager.h; sourceTree = "<group>"; };
+		0FF616E6217F1366005CA1F4 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
+		0FF616E7217F1366005CA1F4 /* FMDBManager+Detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDBManager+Detail.m"; sourceTree = "<group>"; };
+		0FF616E8217F1366005CA1F4 /* FMDBManager+TableList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDBManager+TableList.m"; sourceTree = "<group>"; };
+		0FF616E9217F1366005CA1F4 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		0FF616EA217F1366005CA1F4 /* FMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBManager.m; sourceTree = "<group>"; };
+		0FF616EB217F1366005CA1F4 /* FMDBManager+Detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDBManager+Detail.h"; sourceTree = "<group>"; };
+		0FF616EC217F1366005CA1F4 /* FMDBManager+TableList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDBManager+TableList.h"; sourceTree = "<group>"; };
+		0FF616EE217F1366005CA1F4 /* GCDQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDQueue.m; sourceTree = "<group>"; };
+		0FF616EF217F1366005CA1F4 /* GCDGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDGroup.m; sourceTree = "<group>"; };
+		0FF616F0217F1366005CA1F4 /* GCDQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDQueue.h; sourceTree = "<group>"; };
+		0FF616F1217F1366005CA1F4 /* GCDGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDGroup.h; sourceTree = "<group>"; };
+		0FF616F8217F1448005CA1F4 /* ListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListModel.h; sourceTree = "<group>"; };
+		0FF616F9217F1448005CA1F4 /* ListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListModel.m; sourceTree = "<group>"; };
+		0FF616FB217F145F005CA1F4 /* DetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailModel.m; sourceTree = "<group>"; };
+		0FF616FC217F145F005CA1F4 /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
 		0FF7B110216DE2D700940645 /* chart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF7B113216DE2D700940645 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0FF7B114216DE2D700940645 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -65,7 +115,7 @@
 		0FF7B137216DE2DA00940645 /* chartUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chartUITests.m; sourceTree = "<group>"; };
 		0FF7B139216DE2DA00940645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FF7B145216DE3F800940645 /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		0FF7B146216DE3F800940645 /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		0FF7B146216DE3F800940645 /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; usesTabs = 0; };
 		0FF7B147216DE3F800940645 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		0FF88E5C21707EDE00D01E49 /* CleanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CleanViewController.h; sourceTree = "<group>"; };
 		0FF88E5D21707EDE00D01E49 /* CleanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CleanViewController.m; sourceTree = "<group>"; };
@@ -78,6 +128,15 @@
 		0FF88E69217082BA00D01E49 /* UIColor+ReadBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ReadBank.h"; sourceTree = "<group>"; };
 		0FF88E6D217082F200D01E49 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0FF88E6E2170847900D01E49 /* DefaultConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultConfig.h; sourceTree = "<group>"; };
+		0FF90F7C2179CC0A000963C4 /* HeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
+		0FF90F7D2179CC0A000963C4 /* HeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
+		0FF90F7F2179CC19000963C4 /* HeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadView.xib; sourceTree = "<group>"; };
+		0FF90F812179D4C2000963C4 /* AllTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllTableViewCell.h; sourceTree = "<group>"; };
+		0FF90F822179D4C2000963C4 /* AllTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllTableViewCell.m; sourceTree = "<group>"; };
+		0FF90F832179D4C2000963C4 /* AllTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllTableViewCell.xib; sourceTree = "<group>"; };
+		0FF9C3B12188794C0082D994 /* PreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreViewController.h; sourceTree = "<group>"; };
+		0FF9C3B22188794C0082D994 /* PreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreViewController.m; sourceTree = "<group>"; };
+		0FF9C3B32188794C0082D994 /* PreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreViewController.xib; sourceTree = "<group>"; };
 		0FFAC5F42175CAC200424D5C /* ControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlView.h; sourceTree = "<group>"; };
 		0FFAC5F52175CAC200424D5C /* ControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlView.m; sourceTree = "<group>"; };
 		0FFAC5F72175CAD600424D5C /* ControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ControlView.xib; sourceTree = "<group>"; };
@@ -117,6 +176,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F0BE62221787CBA006D858F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0FF616E4217F1366005CA1F4 /* FMDBManager */,
+				0FF616E0217F119D005CA1F4 /* My */,
+				0F0BE62321787CBA006D858F /* NetWork */,
+				0F0BE63621787CBA006D858F /* HUD */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		0F0BE62321787CBA006D858F /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				0F0BE62421787CBA006D858F /* NetworkManager+aboutLogin.m */,
+				0F0BE62521787CBA006D858F /* NetworkManager.h */,
+				0F0BE62621787CBA006D858F /* NetworkManager+aboutLogin.h */,
+				0F0BE62721787CBA006D858F /* NetworkManager.m */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		0F0BE63621787CBA006D858F /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				0F0BE63721787CBA006D858F /* IndicatorManger.m */,
+				0F0BE63821787CBA006D858F /* IndicatorManger.h */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		0F0BE64221787F4B006D858F /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0FF90F862179E7DE000963C4 /* Model */,
+				0FFDEF3A21742D070017FD15 /* View */,
+				0FF7B116216DE2D700940645 /* ViewController.h */,
+				0FF7B117216DE2D700940645 /* ViewController.m */,
+				0FF7B119216DE2D700940645 /* Main.storyboard */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		0F170966217B16B800C652B4 /* AllViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0F170967217B16F700C652B4 /* AllViewController.h */,
+				0F170968217B16F700C652B4 /* AllViewController.m */,
+				0F170969217B16F700C652B4 /* AllViewController.xib */,
+			);
+			path = AllViewController;
+			sourceTree = "<group>";
+		};
+		0FF616E0217F119D005CA1F4 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				0F17096C217B42F200C652B4 /* MoneyResult.h */,
+				0F17096D217B42F200C652B4 /* MoneyResult.m */,
+				0FF616E1217F11F7005CA1F4 /* DataManager.h */,
+				0FF616E2217F11F7005CA1F4 /* DataManager.m */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		0FF616E4217F1366005CA1F4 /* FMDBManager */ = {
+			isa = PBXGroup;
+			children = (
+				0FF616E6217F1366005CA1F4 /* FileManager.h */,
+				0FF616E9217F1366005CA1F4 /* FileManager.m */,
+				0FF616E5217F1366005CA1F4 /* FMDBManager.h */,
+				0FF616EA217F1366005CA1F4 /* FMDBManager.m */,
+				0FF616EC217F1366005CA1F4 /* FMDBManager+TableList.h */,
+				0FF616E8217F1366005CA1F4 /* FMDBManager+TableList.m */,
+				0FF616EB217F1366005CA1F4 /* FMDBManager+Detail.h */,
+				0FF616E7217F1366005CA1F4 /* FMDBManager+Detail.m */,
+				0FF616ED217F1366005CA1F4 /* GCDQueue */,
+			);
+			path = FMDBManager;
+			sourceTree = "<group>";
+		};
+		0FF616ED217F1366005CA1F4 /* GCDQueue */ = {
+			isa = PBXGroup;
+			children = (
+				0FF616EE217F1366005CA1F4 /* GCDQueue.m */,
+				0FF616EF217F1366005CA1F4 /* GCDGroup.m */,
+				0FF616F0217F1366005CA1F4 /* GCDQueue.h */,
+				0FF616F1217F1366005CA1F4 /* GCDGroup.h */,
+			);
+			path = GCDQueue;
+			sourceTree = "<group>";
+		};
 		0FF7B107216DE2D700940645 = {
 			isa = PBXGroup;
 			children = (
@@ -142,17 +292,14 @@
 		0FF7B112216DE2D700940645 /* chart */ = {
 			isa = PBXGroup;
 			children = (
-				0FFDEF3A21742D070017FD15 /* View */,
+				0F0BE62221787CBA006D858F /* Managers */,
 				0FF88E61217082BA00D01E49 /* Catgory */,
+				0F170966217B16B800C652B4 /* AllViewController */,
+				0FF9C3B0218879160082D994 /* PreViewController */,
 				0FF88E5B21707D1300D01E49 /* CleanViewController */,
+				0F0BE64221787F4B006D858F /* HomeViewController */,
 				0FF7B113216DE2D700940645 /* AppDelegate.h */,
 				0FF7B114216DE2D700940645 /* AppDelegate.m */,
-				0FF7B116216DE2D700940645 /* ViewController.h */,
-				0FF7B117216DE2D700940645 /* ViewController.m */,
-				0FF7B145216DE3F800940645 /* TableViewCell.h */,
-				0FF7B146216DE3F800940645 /* TableViewCell.m */,
-				0FF7B147216DE3F800940645 /* TableViewCell.xib */,
-				0FF7B119216DE2D700940645 /* Main.storyboard */,
 				0FF88E6D217082F200D01E49 /* PrefixHeader.pch */,
 				0FF88E6E2170847900D01E49 /* DefaultConfig.h */,
 				0FF7B11C216DE2DA00940645 /* Assets.xcassets */,
@@ -222,9 +369,39 @@
 			path = UIColor;
 			sourceTree = "<group>";
 		};
+		0FF90F862179E7DE000963C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0FF616F8217F1448005CA1F4 /* ListModel.h */,
+				0FF616F9217F1448005CA1F4 /* ListModel.m */,
+				0FF616FC217F145F005CA1F4 /* DetailModel.h */,
+				0FF616FB217F145F005CA1F4 /* DetailModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0FF9C3B0218879160082D994 /* PreViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0FF9C3B12188794C0082D994 /* PreViewController.h */,
+				0FF9C3B22188794C0082D994 /* PreViewController.m */,
+				0FF9C3B32188794C0082D994 /* PreViewController.xib */,
+			);
+			path = PreViewController;
+			sourceTree = "<group>";
+		};
 		0FFDEF3A21742D070017FD15 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0FF7B145216DE3F800940645 /* TableViewCell.h */,
+				0FF7B146216DE3F800940645 /* TableViewCell.m */,
+				0FF7B147216DE3F800940645 /* TableViewCell.xib */,
+				0FF90F812179D4C2000963C4 /* AllTableViewCell.h */,
+				0FF90F822179D4C2000963C4 /* AllTableViewCell.m */,
+				0FF90F832179D4C2000963C4 /* AllTableViewCell.xib */,
+				0FF90F7C2179CC0A000963C4 /* HeadView.h */,
+				0FF90F7D2179CC0A000963C4 /* HeadView.m */,
+				0FF90F7F2179CC19000963C4 /* HeadView.xib */,
 				0FFDEF3B21742D4F0017FD15 /* KeyboardView.h */,
 				0FFDEF3C21742D4F0017FD15 /* KeyboardView.m */,
 				0FFDEF3E21742D650017FD15 /* KeyboardView.xib */,
@@ -356,10 +533,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F17096B217B16F700C652B4 /* AllViewController.xib in Resources */,
 				0FF88E6021707EDE00D01E49 /* CleanViewController.xib in Resources */,
 				0FF7B120216DE2DA00940645 /* LaunchScreen.storyboard in Resources */,
+				0FF90F802179CC19000963C4 /* HeadView.xib in Resources */,
 				0FFAC5F82175CAD600424D5C /* ControlView.xib in Resources */,
 				0FF7B149216DE3F800940645 /* TableViewCell.xib in Resources */,
+				0FF9C3B52188794C0082D994 /* PreViewController.xib in Resources */,
+				0FF90F852179D4C2000963C4 /* AllTableViewCell.xib in Resources */,
 				0FF7B11D216DE2DA00940645 /* Assets.xcassets in Resources */,
 				0FF7B11B216DE2D700940645 /* Main.storyboard in Resources */,
 				0FFDEF3F21742D650017FD15 /* KeyboardView.xib in Resources */,
@@ -409,15 +590,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FF7B118216DE2D700940645 /* ViewController.m in Sources */,
+				0FF616F2217F1366005CA1F4 /* FMDBManager+Detail.m in Sources */,
 				0FF88E6A217082BA00D01E49 /* UIControl+XIBLayer.m in Sources */,
+				0F0BE63A21787CBA006D858F /* NetworkManager.m in Sources */,
+				0FF9C3B42188794C0082D994 /* PreViewController.m in Sources */,
+				0FF616F7217F1366005CA1F4 /* GCDGroup.m in Sources */,
+				0F17096E217B42F200C652B4 /* MoneyResult.m in Sources */,
+				0FF616F5217F1366005CA1F4 /* FMDBManager.m in Sources */,
+				0F17096A217B16F700C652B4 /* AllViewController.m in Sources */,
 				0FF7B148216DE3F800940645 /* TableViewCell.m in Sources */,
 				0FF88E6B217082BA00D01E49 /* UIView+XIBLayer.m in Sources */,
+				0F0BE64121787CBA006D858F /* IndicatorManger.m in Sources */,
 				0FF7B123216DE2DA00940645 /* main.m in Sources */,
 				0FF88E6C217082BA00D01E49 /* UIColor+ReadBank.m in Sources */,
 				0FFAC5F62175CAC200424D5C /* ControlView.m in Sources */,
+				0FF90F842179D4C2000963C4 /* AllTableViewCell.m in Sources */,
 				0FFDEF3D21742D4F0017FD15 /* KeyboardView.m in Sources */,
+				0FF616F3217F1366005CA1F4 /* FMDBManager+TableList.m in Sources */,
+				0FF616FD217F145F005CA1F4 /* DetailModel.m in Sources */,
+				0FF616FA217F1448005CA1F4 /* ListModel.m in Sources */,
+				0FF616F6217F1366005CA1F4 /* GCDQueue.m in Sources */,
 				0FFAC5FB2175CF7600424D5C /* UIView+Xib.m in Sources */,
+				0FF90F7E2179CC0A000963C4 /* HeadView.m in Sources */,
+				0FF616F4217F1366005CA1F4 /* FileManager.m in Sources */,
 				0FF7B115216DE2D700940645 /* AppDelegate.m in Sources */,
+				0F0BE63921787CBA006D858F /* NetworkManager+aboutLogin.m in Sources */,
+				0FF616E3217F11F7005CA1F4 /* DataManager.m in Sources */,
 				0FF88E5F21707EDE00D01E49 /* CleanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,7 +797,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.whohelp.JiaoJiangChart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.whohelp.SCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -619,7 +817,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.whohelp.JiaoJiangChart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.whohelp.SCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

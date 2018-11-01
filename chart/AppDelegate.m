@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,26 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:[FileManager databaseForMasterPath]];
+    [FMDB checkBehaviorTableExist:db];
+    NSArray *array = [FMDB selectTableList];
+    if (array.count == 0) {
+        NSString *listId = [[DataManager defaultManager] getNowTimeTimestamp];
+        ListModel *listModel = [ListModel modelWithListId:listId total:@"0" course:1 no:1 input:@"0.00" result:@"未开" thisAll:@"0"];
+        [FMDB insertTableList:listModel];
+        [FMDB initDetail:listId];
+        
+    }
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle: nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+    self.window.rootViewController = vc;
+    
     return YES;
 }
 

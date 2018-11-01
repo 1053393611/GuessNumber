@@ -116,10 +116,14 @@
 - (void)complete{
     
     if (self.isCleanAll) {
-        
-        
+        // 清空所有
+        [self deleteAll];
     }else {
-        
+        // 结束本场
+        [self finish];
+    }
+    if ([_delegate respondsToSelector:@selector(reloadTableView)]) {
+        [_delegate reloadTableView];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -131,6 +135,36 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+#pragma mark - 清空所有
+- (void)deleteAll {
+    [FMDB deleteTableList];
+    [FMDB deleteDetail];
+    NSString *listId = [[DataManager defaultManager] getNowTimeTimestamp];
+    NSArray *dataArray = [[DataManager defaultManager] getData];
+    
+    ListModel *listModel = [ListModel modelWithListId:listId total:@"0" course:1 no:1 input:@"0.00" result:@"未开" thisAll:@"0"];
+    [FMDB insertTableList:listModel];
+    
+    NSArray *nameArray = [dataArray valueForKeyPath:@"name"];
+    [FMDB initDetail:listId name:nameArray];
+    
+    [[DataManager defaultManager] updateDataFromDatabase];
+}
+
+#pragma mark - 结束本场
+- (void)finish {
+    NSString *listId = [[DataManager defaultManager] getNowTimeTimestamp];
+    NSArray *dataArray = [[DataManager defaultManager] getData];
+    NSInteger course = [[dataArray.firstObject objectForKey:@"course"] integerValue] + 1;
+    ListModel *listModel = [ListModel modelWithListId:listId total:@"0" course:course no:1 input:@"0.00" result:@"未开" thisAll:@"0"];
+    [FMDB insertTableList:listModel];
+    
+    NSArray *nameArray = [dataArray valueForKeyPath:@"name"];
+    [FMDB initDetail:listId name:nameArray];
+    
+    [[DataManager defaultManager] updateDataFromDatabase];
+}
 
 
 @end

@@ -4,5 +4,11 @@ platform :ios, '9.0'
 target 'chart' do
   
   pod 'Masonry'
+  pod 'FMDB'
+  pod 'MBProgressHUD'
+  pod 'WechatOpenSDK'
+  pod 'AFNetworking'
+  pod 'JCAlertController'
+  pod 'JJStockView'
 
 end
