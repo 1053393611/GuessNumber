@@ -41,7 +41,7 @@
     
     id tempDelegate = _rightContentScrollView.delegate;
     _rightContentScrollView.delegate = nil;//Do not send delegate message
-    
+    _rightContentScrollView.bounces = NO;
     _rightContentScrollView.frame = CGRectMake(CGRectGetWidth(self.titleView.frame), 0, CGRectGetWidth(self.frame) - CGRectGetWidth(self.titleView.frame), CGRectGetHeight(self.rightContentView.frame));
     _rightContentScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.rightContentView.frame), CGRectGetHeight(self.rightContentView.frame));
     

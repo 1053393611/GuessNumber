@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "LoginViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -18,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [WXApi registerApp:@"wx18f3534b54aed2c8" enableMTA:YES];
     
     FMDatabase *db = [FMDatabase databaseWithPath:[FileManager databaseForMasterPath]];
     [FMDB checkBehaviorTableExist:db];
@@ -34,8 +36,16 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle: nil] instantiateViewControllerWithIdentifier:@"ViewController"];
-    self.window.rootViewController = vc;
+    
+    BOOL isLogin = [[USERDEFAULT objectForKey:@"isLogin"] boolValue];
+    if ( isLogin ) { // 用户是登录状态
+        ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle: nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+        self.window.rootViewController = vc;
+        [self getVcodeType];
+    } else { // 用户未登录状态
+        LoginViewController *vc = HBALLOCOBJ(LoginViewController);
+        self.window.rootViewController = vc;
+    }
     
     return YES;
 }
@@ -67,5 +77,59 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+//从微信分享过后点击返回应用的时候调用
+- (void)onResp:(BaseResp *)resp {
+    
+    //把返回的类型转换成与发送时相对于的返回类型,这里为SendMessageToWXResp
+    //    SendMessageToWXResp *sendResp = (SendMessageToWXResp *)resp;
+    //
+    //    //使用UIAlertView 显示回调信息
+    //    NSString *str = [NSString stringWithFormat:@"%d",sendResp.errCode];
+    //    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"回调信息" message:str delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
+    //    [alertview show];
+    /*
+     WXSuccess           = 0,     成功
+     WXErrCodeCommon     = -1,    普通错误类型
+     WXErrCodeUserCancel = -2,    用户点击取消并返回
+     WXErrCodeSentFail   = -3,    发送失败
+     WXErrCodeAuthDeny   = -4,    授权失败
+     WXErrCodeUnsupport  = -5,    微信不支持
+     */
+}
+
+#pragma mark - 获取验证码状态
+
+- (void)getVcodeType {
+    NSString *vcode = [USERDEFAULT objectForKey:@"vcode"];
+    [NetWork getVcodeTypeWithCcode:vcode success:^(NSDictionary *response) {
+        NSLog(@"%@", response);
+        if ([response[@"code"] integerValue] == 0) {
+            
+        }else {
+            LoginViewController *vc = HBALLOCOBJ(LoginViewController);
+            self.window.rootViewController = vc;
+            JCAlertController *alert = [JCAlertController alertWithTitle:@"提示" message:response[@"msg"]];
+            [alert addButtonWithTitle:@"确定" type:JCButtonTypeNormal clicked:nil];
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            [USERDEFAULT removeObjectForKey:@"isLogin"];
+            [USERDEFAULT removeObjectForKey:@"vcode"];
+        }
+    } failure:^(NSString *message) {
+        NSLog(@"%@", message);
+        //        JCAlertController *alert = [JCAlertController alertWithTitle:@"提示" message:message];
+        //        [alert addButtonWithTitle:@"确定" type:JCButtonTypeNormal clicked:nil];
+        //        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }];
+}
 
 @end

@@ -49,6 +49,8 @@ static NSString* const CellID = @"cellID";
 #pragma mark - Setup
 
 - (void)setupView{
+    self.stockTableView.bounces = NO;
+    self.stockTableView.showsVerticalScrollIndicator = NO;
     [self addSubview:self.stockTableView];
 }
 
@@ -145,7 +147,7 @@ static NSString* const CellID = @"cellID";
     if([self.delegate respondsToSelector:@selector(heightForHeadTitle:)]){
         headHeight =  [self.delegate heightForHeadTitle:self];
     }
-
+    self.headScrollView.bounces = NO;
     [headerView addSubview:self.headScrollView];
 
     self.headScrollView.frame = CGRectMake(regularWidth,0,CGRectGetWidth(self.frame) - regularWidth,headHeight);

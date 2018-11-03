@@ -29,4 +29,7 @@
 
 - (NSMutableArray *)selectTableList:(NSInteger)course no:(NSInteger)no;
 
+// 每一场的结果
+- (NSMutableArray *)selectTableListResult;
+
 @end

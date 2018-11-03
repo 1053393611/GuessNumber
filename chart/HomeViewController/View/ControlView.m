@@ -32,7 +32,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshResult:) name:@"refreshResult" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshIndex:) name:@"refreshIndex" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTextView:) name:@"refreshTextView" object:nil];
 }
 
 - (void)dealloc
@@ -78,6 +78,7 @@
     vc.no = [[dataArray.firstObject objectForKey:@"no"] integerValue];
     [[self getViewController:self] presentViewController:vc animated:YES completion:nil];
     [tableView reloadData];
+    [self aboutResult];
     [self setAllButtonGray];
 }
 
@@ -85,6 +86,9 @@
 - (IBAction)checkAll:(UIButton *)sender {
     AllViewController *vc = [[AllViewController alloc] init];
     [[self getViewController:self] presentViewController:vc animated:YES completion:nil];
+    [tableView reloadData];
+    [self aboutResult];
+    [self setAllButtonGray];
 }
 
 // 结束本筒
@@ -417,6 +421,11 @@
     }
 }
 
+- (void)refreshTextView:(NSNotification *)noti {
+    
+    UITextView *tView = [self viewWithTag:502];
+    [tView becomeFirstResponder];
+}
 
 #pragma mark - 数字显示
 - (NSString *)getStringWithNumber:(float)number {
@@ -439,7 +448,11 @@
 // 结束本筒后显示
 - (void)aboutControlView {
     UIView *openBGView = [self viewWithTag:500];
+    UITextView *openLabel = [self viewWithTag:501];
+    UITextView *openTextView = [self viewWithTag:502];
     UIButton *openBtn = [self viewWithTag:503];
+    openLabel.text = @"请输入";
+    openTextView.text = @"";
     openBGView.hidden = YES;
     openBtn.hidden = NO;
     // 查看上筒按钮
@@ -475,6 +488,22 @@
         [button setTitleColor:[UIColor colorWithSome:200] forState:UIControlStateNormal];
     }
     
+}
+
+// 点击 开牌相关
+- (void)aboutResult {
+    UIView *bgView = [self viewWithTag:500];
+    UITextView *textView = [self viewWithTag:502];
+    UIButton *buttn = [self viewWithTag:503];
+    if ([textView.text isEqualToString:@""]) {
+        // 没有结果
+        bgView.hidden = YES;
+        buttn.hidden = NO;
+    }else {
+        // 有结果
+        bgView.backgroundColor = [UIColor clearColor];
+        bgView.layer.borderWidth = 0;
+    }
 }
 
 // 继续修改本筒后的显示

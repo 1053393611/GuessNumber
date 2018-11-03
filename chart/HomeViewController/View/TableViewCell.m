@@ -120,7 +120,7 @@
         [FMDB updateDetailAboutName:model];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshIndex" object:@(path.row)];
     }];
-    
+    [self.textView becomeFirstResponder];
     
     [alt addAction:cancelAction];
     [alt addAction:okAction];
@@ -168,9 +168,14 @@
 #pragma mark - 键盘弹出
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
-    UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:2];
-    tempWindow.hidden = YES;
-    [tempWindow setAlpha:0];
+    for (UIWindow *window in [[UIApplication sharedApplication] windows] ) {
+        if ([[window description] hasPrefix:@"<UIRemoteKeyboardWindow"] == YES) {
+            UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:2];
+            tempWindow.hidden = YES;
+            [tempWindow setAlpha:0];
+        }
+    }
+    
 }
 
 
@@ -206,6 +211,7 @@
         self.selectedBackgroundView = view;
         self.selectedBackgroundView.backgroundColor = [UIColor colorWithQuick:247 green:255 blue:246];
         [self.textView becomeFirstResponder];
+        self.textView.tintColor = [UIColor redColor];
     }else{
         //未选中时候的样式
         UIView *view = [[UIView alloc]initWithFrame:self.bounds];
@@ -213,7 +219,7 @@
 //        view.layer.borderColor = [UIColor colorWithQuick:126 green:198 blue:113].CGColor;
         self.selectedBackgroundView = view;
         self.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
-        [self.textView resignFirstResponder];
+//        [self.textView resignFirstResponder];
     }
 }
 

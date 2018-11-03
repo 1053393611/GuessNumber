@@ -145,6 +145,15 @@
             // 开牌情况
 //            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshResult" object:@(index)];
             [self refreshResult:index];
+            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC));
+            dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTextView" object:nil];
+            });
+            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                //刷新完成，执行后续代码
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTextView" object:nil];
+//            });
             self.stringLabel.text = [NSString stringWithFormat:@"  %ld",index];
             [self judgeFinishThisBtn];
             return;
@@ -173,6 +182,10 @@
 //                    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshResult" object:@(0)];
                     
                     [self refreshResult:0];
+                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC));
+                    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTextView" object:nil];
+                    });
                     self.stringLabel.text = @"";
                     [self judgeFinishThisBtn];
                     return;

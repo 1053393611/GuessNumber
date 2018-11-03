@@ -117,6 +117,26 @@
     return list;
 }
 
+- (NSMutableArray *)selectTableListResult{
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    
+    NSString *sql = @"select * from tbl_List GROUP BY course order by course,no desc";
+    
+    [self.master inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        FMResultSet *rs = [db executeQuery:sql];
+        
+        while ( [rs next] ) {
+            ListModel *model = [ListModel listModelWithFMResultSet:rs];
+            NSDictionary *dic = [ListModel dictionaryWithListModel:model];
+            [list addObject:dic];
+        }
+        
+        [rs close];
+    }];
+    
+    return list;
+}
+
 
 
 @end
