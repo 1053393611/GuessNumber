@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,6 +44,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="A5U-W3-cx8"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="hKE-Oo-Xvd"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXK-sJ-PWx">
@@ -66,6 +67,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="4HR-Nc-YrP"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="EIH-gT-GBS"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWO-99-noT">
@@ -88,6 +90,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="K13-wT-A7v"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="QxW-Ad-Rxc"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9E-16-8vS">
@@ -107,6 +110,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="8Dk-Ng-RMG"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="Nsg-jb-Wfe"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="210" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n39-W9-S7d">
@@ -126,6 +130,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="hri-CY-lkg"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="s8h-Od-Rb5"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="213" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUm-Kr-dVG">
@@ -145,6 +150,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="6rx-3O-r37"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="iZX-t4-rue"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IU-Tu-4za">
@@ -167,6 +173,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="W6n-SH-TN3"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="di3-fx-GqW"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JnT-FP-Myd">
@@ -189,6 +196,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="gf9-Lh-Kzq"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="Mue-9v-toH"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="205" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neh-pf-TcT">
@@ -208,6 +216,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="Shw-7Y-TXb"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="52c-lc-UCC"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="206" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SK5-oK-evI">
@@ -227,6 +236,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="JF9-3m-wik"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="2vA-CD-cNN"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="212" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7Z-1d-ptx">
@@ -246,6 +256,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="X2W-7p-AFS"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="Lhd-Wm-UCm"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ako-aZ-cXN">
@@ -268,6 +279,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="7ya-Wg-bKU"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="ziW-0A-fIK"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="208" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJ0-sY-vNf">
@@ -290,6 +302,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="EVm-9c-QUF"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="5ij-aK-Xls"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="211" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7L-Es-cGK">
@@ -312,6 +325,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="IUd-lo-pi6"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="IQu-2e-5Lm"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEx-Xe-FfI">
@@ -338,6 +352,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="UwK-DG-ASH"/>
+                                <action selector="buttonPress:" destination="-1" eventType="touchDown" id="xUp-K6-mdN"/>
                             </connections>
                         </button>
                     </subviews>

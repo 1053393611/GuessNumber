@@ -33,6 +33,45 @@ static MoneyResult* _instance = nil;
     
     if ([guessString containsString:@"."]) {
         // 有.
+        CGFloat re = 0;
+        if(array.count == 3){
+            re = -money;
+            NSString *guess = [guessString stringByReplacingOccurrencesOfString:@"." withString:@""];
+            if (guess.length == 2){
+                // 有两个数
+                NSString *f = [guess substringToIndex:1];
+                NSString *s = [guess substringFromIndex:1];
+                if ([f integerValue] == number || [s integerValue] == number) {
+                    if (number == 1) {
+                        // 猜中1
+                        re = money * 1.5;
+                    }else {
+                        // 猜中其他数（2-6）
+                        re = money * 2;
+                    }
+                }
+                
+            }else {
+                // 有三个数
+                NSString *f = [guess substringToIndex:1];
+                NSString *s = [guess substringWithRange:NSMakeRange(1, 1)];
+                NSString *t = [guess substringFromIndex:2];
+                if ([f integerValue] == number || [s integerValue] == number || [t integerValue] == number) {
+                    if (number == 1) {
+                        // 猜中1
+                        re = money * 0.7;
+                    }else {
+                        // 猜中其他数（2-6）
+                        re = money * 1;
+                    }
+                }
+                
+            }
+            moneyString = array[1];
+            money = [moneyString floatValue]/10;
+            result = - money;
+        }
+        
         NSArray *a = [guessString componentsSeparatedByString:@"."];
         NSString *first = a.firstObject;
         NSString *last = a.lastObject;
@@ -77,10 +116,49 @@ static MoneyResult* _instance = nil;
             }
             
         }
-        
+        result = result + re;
         
     }else if ([guessString containsString:@">"]){
         // 有>
+        CGFloat re = 0;
+        if(array.count == 3){
+            re = -money;
+            NSString *guess = [guessString stringByReplacingOccurrencesOfString:@">" withString:@""];
+            if (guess.length == 2){
+                // 有两个数
+                NSString *f = [guess substringToIndex:1];
+                NSString *s = [guess substringFromIndex:1];
+                if ([f integerValue] == number || [s integerValue] == number) {
+                    if (number == 1) {
+                        // 猜中1
+                        re = money * 1.5;
+                    }else {
+                        // 猜中其他数（2-6）
+                        re = money * 2;
+                    }
+                }
+                
+            }else {
+                // 有三个数
+                NSString *f = [guess substringToIndex:1];
+                NSString *s = [guess substringWithRange:NSMakeRange(1, 1)];
+                NSString *t = [guess substringFromIndex:2];
+                if ([f integerValue] == number || [s integerValue] == number || [t integerValue] == number) {
+                    if (number == 1) {
+                        // 猜中1
+                        re = money * 0.7;
+                    }else {
+                        // 猜中其他数（2-6）
+                        re = money * 1;
+                    }
+                }
+                
+            }
+            moneyString = array[1];
+            money = [moneyString floatValue]/10;
+            result = - money;
+        }
+        
         NSArray *a = [guessString componentsSeparatedByString:@">"];
         NSString *first = a.firstObject;
         NSString *last = a.lastObject;
@@ -100,7 +178,7 @@ static MoneyResult* _instance = nil;
             // 猜中>后面的数
             result = money * 1;
         }
-        
+        result = result + re;
     }else {
         // 只有数字
         if (guessString.length == 1) {

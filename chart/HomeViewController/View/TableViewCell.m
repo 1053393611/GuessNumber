@@ -103,11 +103,11 @@
         CGSize size1 = [self.textView sizeThatFits:constraintSize1];
 
         NSInteger index = [[self getTableView:self] indexPathForCell:self].row;
-        NSInteger height = (size1.height > 40) ? size1.height : 40;
-        if (size.height > height + 10) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(size.height + 10),@(index)]];
+        NSInteger height = (size1.height > 45) ? size1.height : 45;
+        if (size.height > height) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(size.height),@(index)]];
         }else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(height + 10),@(index)]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(height),@(index)]];
         }
         
         [[self getTableView:self] beginUpdates];
@@ -136,33 +136,33 @@
 
 
 #pragma mark - textView 内容改变
--(void)textViewDidChange:(UITextView *)textView{
-
-    CGRect frame = textView.frame;
-    CGSize constraintSize = CGSizeMake(frame.size.width, MAXFLOAT);
-    CGSize size = [textView sizeThatFits:constraintSize];
-    
-    CGRect frame1 = self.nameLabel.frame;
-    CGSize constraintSize1 = CGSizeMake(frame1.size.width, MAXFLOAT);
-    CGSize size1 = [self.nameLabel sizeThatFits:constraintSize1];
-    
-    NSInteger index = [[self getTableView:self] indexPathForCell:self].row;
-    
-    NSInteger height = (size1.height > 40) ? size1.height : 40 ;
-    
-    if (size.height > height + 10) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(size.height + 10),@(index)]];
-    }else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(height + 10),@(index)]];
-    }
-    
-    [[self getTableView:self] beginUpdates];
-    [[self getTableView:self] endUpdates];
-    
-    // 重点：消除文字抖动
-    [textView scrollRangeToVisible:NSMakeRange(0,0)];
-    
-}
+//-(void)textViewDidChange:(UITextView *)textView{
+//
+//    CGRect frame = textView.frame;
+//    CGSize constraintSize = CGSizeMake(frame.size.width, MAXFLOAT);
+//    CGSize size = [textView sizeThatFits:constraintSize];
+//
+//    CGRect frame1 = self.nameLabel.frame;
+//    CGSize constraintSize1 = CGSizeMake(frame1.size.width, MAXFLOAT);
+//    CGSize size1 = [self.nameLabel sizeThatFits:constraintSize1];
+//
+//    NSInteger index = [[self getTableView:self] indexPathForCell:self].row;
+//
+//    NSInteger height = (size1.height > 40) ? size1.height : 40 ;
+//
+//    if (size.height > height + 10) {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(size.height + 10),@(index)]];
+//    }else {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(height + 10),@(index)]];
+//    }
+//
+//    [[self getTableView:self] beginUpdates];
+//    [[self getTableView:self] endUpdates];
+//
+//    // 重点：消除文字抖动
+//    [textView scrollRangeToVisible:NSMakeRange(0,0)];
+//
+//}
 
 
 #pragma mark - 键盘弹出
@@ -244,10 +244,10 @@
     CGSize size1 = [self.textView sizeThatFits:constraintSize1];
     
     NSInteger height = (size1.height > size.height) ? size1.height : size.height;
-    if (height > 40) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(height + 10),@(index)]];
+    if (height > 45) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(height),@(index)]];
     }else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(50),@(index)]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCellHeight" object:@[@(45),@(index)]];
     }
     // 重点：消除文字抖动
     [self.textView scrollRangeToVisible:NSMakeRange(0,0)];
@@ -260,7 +260,7 @@
     allMoney = [[cellData objectForKey:@"total"] floatValue] - [[cellData objectForKey:@"thisAll"] floatValue] - [[cellData objectForKey:@"update"] floatValue];
     index = [[cellData objectForKey:@"row"] integerValue];
     
-    self.rowLabel.text = [NSString stringWithFormat:@"%ld", index];
+    self.rowLabel.text = [NSString stringWithFormat:@"%ld", (long)index];
     
     self.AllLabel.text = [cellData objectForKey:@"total"];
     if ([[cellData objectForKey:@"total"] floatValue] >= 0) {
@@ -317,10 +317,29 @@
     NSArray *array = [resultString componentsSeparatedByString:@"\n"];
     NSString *s = array.lastObject;
     
+    
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:self.resultTextView.text];
+    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, self.resultTextView.text.length)];
+    for (NSString *str in array) {
+        if (![str isEqualToString:@"X"]) {
+            if ([str floatValue] < 0) {
+                NSMutableArray *marr = [self getRangeStr:self.resultTextView.text findText:str];
+                if ( marr != nil ) {
+                    for (NSInteger k = 0; k < marr.count; k++) {
+                        NSNumber *num = [marr objectAtIndex:k];
+                        NSRange r = NSMakeRange([num integerValue], str.length);
+                        [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:r];
+                    }
+                }
+            }
+        }
+    }
+    
     if ([s isEqualToString:@"X"]) {
-        [self setupTextView:self.resultTextView range:[resultString rangeOfString:@"X"] color:[UIColor redColor]];
+        [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:[resultString rangeOfString:@"X"]];
         
     }
+    [self.resultTextView setAttributedText:string];
 }
 
 // 设置富文本
@@ -332,6 +351,52 @@
     [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, textView.text.length)];
     
     [textView setAttributedText:string];
+}
+
+#pragma mark - 获取这个字符串中的所有xxx的所在的index
+- (NSMutableArray *)getRangeStr:(NSString *)text findText:(NSString *)findText {
+    
+    NSMutableArray *arrayRanges = [NSMutableArray arrayWithCapacity:30];
+    
+    if (findText == nil && [findText isEqualToString:@""]) {
+        return nil;
+    }
+    
+    NSRange rang = [text rangeOfString:findText]; //获取第一次出现的range
+    
+    if (rang.location != NSNotFound && rang.length != 0) {
+        [arrayRanges addObject:[NSNumber numberWithInteger:rang.location]];//将第一次的加入到数组中
+        
+        NSRange rang1 = {0,0};
+        
+        NSInteger location = 0;
+        NSInteger length = 0;
+        
+        for (int i = 0;; i++) {
+            if (0 == i) {//去掉这个xxx
+                location = rang.location + rang.length;
+                length = text.length - rang.location - rang.length;
+                rang1 = NSMakeRange(location, length);
+            } else {
+                location = rang1.location + rang1.length;
+                length = text.length - rang1.location - rang1.length;
+                rang1 = NSMakeRange(location, length);
+            }
+            
+            //在一个range范围内查找另一个字符串的range
+            rang1 = [text rangeOfString:findText options:NSCaseInsensitiveSearch range:rang1];
+            
+            if (rang1.location == NSNotFound && rang1.length == 0) {
+                break;
+            } else {//添加符合条件的location进数组
+                [arrayRanges addObject:[NSNumber numberWithInteger:rang1.location]];
+            }
+        }
+        
+        return arrayRanges;
+    }
+    
+    return nil;
 }
 
 
@@ -549,7 +614,7 @@
 
 #pragma mark - 数字显示
 - (NSString *)getStringWithNumber:(float)number {
-    int decimalNum = 4; //保留的小数位数
+    int decimalNum = 2; //保留的小数位数
     
     NSNumberFormatter *nFormat = [[NSNumberFormatter alloc] init];
     

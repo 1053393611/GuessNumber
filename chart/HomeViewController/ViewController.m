@@ -12,8 +12,9 @@
 #import "TableViewCell.h"
 #import "CleanViewController.h"
 #import "ControlView.h"
+#import "UpdateViewController.h"
 
-#define cellHeight 50
+#define cellHeight 45
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource,UITextViewDelegate>{
     NSMutableArray *heightArray;
@@ -21,6 +22,8 @@
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet ControlView *controlView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyWidth;
 
 @end
 
@@ -58,11 +61,25 @@
     }
     
     [self getData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doRotateAction:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)doRotateAction:(NSNotification *)notification {
+    NSLog(@"宽：%f, 高：%f, %f, %f", HBScreenWidth, HBScreenHeight, HBViewHeight, HBLandscapeViewHeight);
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait || [[UIDevice currentDevice] orientation] == UIDeviceOrientationPortraitUpsideDown) {
+        self.width.constant = 150;
+        self.keyWidth.constant = 150;
+        NSLog(@"竖屏");
+    } else if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
+        self.width.constant = 0;
+        self.keyWidth.constant = 0;
+        NSLog(@"横屏");
+    }
 }
 
 
@@ -89,7 +106,10 @@
         return cell;
     }
     TableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
-
+    cell.tag = indexPath.row + 100;
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textAction:)];
+    doubleTap.numberOfTapsRequired =2;
+    [cell addGestureRecognizer:doubleTap];
     // 分割线顶到头
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
@@ -132,7 +152,23 @@
 //    cell.cellData = @{@"index":@(path.row),@"input":string};
 //}
 
-
+#pragma mark - 双击输入
+- (void)textAction:(UITapGestureRecognizer *)tap {
+    NSInteger index = tap.view.tag;
+    //    NSLog(@"双击%ld",index);
+    UpdateViewController *vc = [[UpdateViewController alloc] init];
+    vc.rowNo = index - 100;
+    vc.dataArray = dataArray;
+    vc.reloadTheVC = ^{
+        [[DataManager defaultManager] updateDataFromDatabase];
+        [self.tableView reloadData];
+        NSIndexPath *path = [NSIndexPath indexPathForRow:index - 100 inSection:0];
+        [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self aboutResult];
+        self.controlView.cellData = @{@"index":@(index - 100),@"tableView":self.tableView,@"dataArray":self->dataArray};
+    };
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 #pragma mark - 数据
 - (void)getData {
@@ -241,120 +277,6 @@
     
 }
 
-#pragma mark - 截图 分享
-- (IBAction)shareAction:(id)sender {
-    
-    // 截屏
-    UIWindow  *window = [UIApplication sharedApplication].keyWindow;
-    
-    UIImage * image = [self captureImageFromView:window];
-   
-    // 图片保存相册
-    //    UIImage *image = [UIImage imageNamed:@"cellBack"];
-    UIImageWriteToSavedPhotosAlbum(image,self,@selector(imageSavedToPhotosAlbum: didFinishSavingWithError: contextInfo:),nil);
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"分享当前屏幕" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
-    
-    UIAlertAction *weChatOneAction = [UIAlertAction actionWithTitle:@"分享至微信好友" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        if ([WXApi isWXAppInstalled]) {
-            //            [WXApi openWXApp];
-            WXMediaMessage *message = [WXMediaMessage message];
-            // 设置消息缩略图的方法
-            CGSize size = CGSizeMake(100, 100);
-            UIGraphicsBeginImageContext(size);
-            [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-            UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            [message setThumbImage:resultImage];
-            // 多媒体消息中包含的图片数据对象
-            WXImageObject *imageObject = [WXImageObject object];
-            
-            //        UIImage *image = _shareImage.image;
-            
-            // 图片真实数据内容
-            
-            NSData *data = UIImagePNGRepresentation(image);
-            imageObject.imageData = data;
-            // 多媒体数据对象，可以为WXImageObject，WXMusicObject，WXVideoObject，WXWebpageObject等。
-            message.mediaObject = imageObject;
-            
-            SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-            req.bText = NO;
-            req.message = message;
-            req.scene = WXSceneSession;
-            
-            //            [WXApi sendReq:req];
-            [GCDQueue executeInMainQueue:^{
-                [WXApi sendReq:req];
-            }];
-            
-        }else {
-            [Hud showMessage:@"本机未安装微信，请先下载微信"];
-        }
-        
-        
-    }];
-    
-    [alertController addAction:weChatOneAction];
-    [alertController addAction:cancelAction];
-    
-    //    if ([alertController respondsToSelector:@selector(popoverPresentationController)]) {
-    //
-    //        alertController.popoverPresentationController.sourceView = self.view; //必须加
-    //
-    ////        alertVC.popoverPresentationController.sourceRect = CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight);//可选，我这里加这句代码是为了调整到合适的位置
-    //
-    //    }
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-// 图片保存后的回调
-- (void)imageSavedToPhotosAlbum:(UIImage*)image didFinishSavingWithError:  (NSError*)error contextInfo:(id)contextInfo
-
-{
-    if(!error) {
-        //        [self showHUD:@"成功保存到相册"];
-        
-    }else {
-        //        NSString *message = [error description];
-        //        [self showHUD:message];
-    }
-    
-}
-
-
-// 截屏
--(UIImage *)captureImageFromView:(UIView *)view{
-    
-//    UIGraphicsBeginImageContextWithOptions(view.frame.size,NO, 0);
-//
-//    [[UIColor clearColor] setFill];
-//
-//    [[UIBezierPath bezierPathWithRect:self.view.bounds] fill];
-//
-//    CGContextRef ctx = UIGraphicsGetCurrentContext();
-//
-//    //    [self.view.layer renderInContext:ctx];
-//    [self.navigationController.view.layer renderInContext:ctx];
-//
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//
-//    UIGraphicsEndImageContext();
-//
-//    return image;
-    CGSize size = view.bounds.size;
-    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-    CGRect rect = view.frame;
-    [view drawViewHierarchyInRect:rect afterScreenUpdates:YES];
-    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return snapshotImage;
-    
-}
 
 
 @end

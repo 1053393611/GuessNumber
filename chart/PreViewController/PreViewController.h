@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) NSInteger course;
 @property (assign, nonatomic) NSInteger no;
-
+@property (nonatomic, strong) void(^reloadTheVC)(void);
 @end
 
 NS_ASSUME_NONNULL_END

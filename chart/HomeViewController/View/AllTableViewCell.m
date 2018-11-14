@@ -57,12 +57,16 @@
                 NSArray *a = [string componentsSeparatedByString:@"/"];
                 NSString *s = a.lastObject;
                 thisAll += [s floatValue];
+                if (a.count == 3) {
+                    NSString *s = a[1];
+                    thisAll += [s floatValue];
+                }
             }
         }
         all += thisAll;
     }
     
-    self.inputLabel.text = [self getStringWithNumber:all/10];
+    self.inputLabel.text = [self getInputStringWithNumber:all/10];
     
     [dataDic setObject:self.inputLabel.text forKey:@"input"];
     
@@ -120,7 +124,7 @@
     [[DataManager defaultManager] updateDataWithDictionary:dataDic];
     ListModel *model = [ListModel listModelWithDictionary:dataDic];
     [FMDB updateTableList:model];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshLabel" object:nil];
 }
 // 更新
 - (void)updateResult:(NSNotification *)noti {
@@ -157,7 +161,7 @@
     [[DataManager defaultManager] updateDataWithDictionary:dataDic];
     ListModel *model = [ListModel listModelWithDictionary:dataDic];
     [FMDB updateTableList:model];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshLabel" object:nil];
 }
 
 
@@ -176,6 +180,19 @@
     if (number > 0) {
         string = [NSString stringWithFormat:@"+%@", string];
     }
+    return string;
+}
+
+- (NSString *)getInputStringWithNumber:(float)number {
+    int decimalNum = 2; //保留的小数位数
+    
+    NSNumberFormatter *nFormat = [[NSNumberFormatter alloc] init];
+    
+    [nFormat setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    [nFormat setMaximumFractionDigits:decimalNum];
+    
+    NSString *string = [nFormat stringFromNumber:@(number)];
     return string;
 }
 

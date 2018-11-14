@@ -8,8 +8,8 @@
 
 #import "AllViewController.h"
 
-#define CellHeight 40
-#define HeadHeight 110
+#define CellHeight 35
+#define HeadHeight (CellHeight * 2 + 30)
 #define itemWidth 100
 
 #define Green [UIColor colorWithQuick:62 green:131 blue:148]
@@ -26,6 +26,7 @@
     NSMutableArray *updateArray;
     NSMutableArray *everyAllArray;
     NSInteger index;
+    BOOL isSort;
 }
 
 @property (strong, nonatomic) JJStockView *stockView;
@@ -38,8 +39,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     index = -1;
+    isSort = NO;
     self.stockView.frame = CGRectMake(0, 20, CGRectGetWidth(self.view.frame) - 150, CGRectGetHeight(self.view.frame) - 20);
     [self.view addSubview:self.stockView];
+    [self.stockView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_left);
+        make.top.mas_equalTo(self.view.mas_top).offset(20);
+        make.right.mas_equalTo(self.view.mas_right).offset(-120);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+    }];
+    
     [self getData];
 }
 
@@ -63,12 +72,16 @@
     UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, CellHeight)];
     label1.textColor = BlackColor;
     label1.text = [NSString stringWithFormat:@"%ld", row + 1];
+    if (contentArray.count !=0) {
+        label1.text = [NSString stringWithFormat:@"%@", [contentArray.firstObject[row] objectForKey:@"row"]];
+    }
     label1.textAlignment = NSTextAlignmentCenter;
     [label1 setBorderWithTop:NO left:YES bottom:NO right:YES borderColor:LineColor borderWidth:1];
     [BGView addSubview:label1];
 
     UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, itemWidth, CellHeight)];
     label2.text = nameArray[row];
+    label2.adjustsFontSizeToFitWidth = YES;
     label2.textAlignment = NSTextAlignmentCenter;
     [BGView addSubview:label2];
 
@@ -132,6 +145,7 @@
     [nameLabel setBorderWithTop:NO left:NO bottom:NO right:YES borderColor:LineColor borderWidth:1];
     nameLabel.backgroundColor = BGColor;
     nameLabel.text = nameArray[row];
+    nameLabel.adjustsFontSizeToFitWidth = YES;
     nameLabel.textAlignment = NSTextAlignmentCenter;
     [BGView addSubview:nameLabel];
     
@@ -169,12 +183,12 @@
     UIView *BGView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, itemWidth + 50, HeadHeight)];
     [BGView setBorderWithTop:YES left:YES bottom:YES right:YES borderColor:LineColor borderWidth:1];
     
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, 50, 30)];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, CellHeight, 50, 30)];
     label1.backgroundColor = BlackColor;
     [label1 setBorderWithTop:NO left:YES bottom:NO right:YES borderColor:LineColor borderWidth:1];
     [BGView addSubview:label1];
     
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(50, 40, itemWidth, 30)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(50, CellHeight, itemWidth, 30)];
     label2.backgroundColor = BlackColor;
     [label2 setBorderWithTop:NO left:NO bottom:NO right:YES borderColor:LineColor borderWidth:1];
     label2.text = @"名字";
@@ -182,12 +196,12 @@
     label2.textAlignment = NSTextAlignmentCenter;
     [BGView addSubview:label2];
     
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, 50, CellHeight)];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(0, CellHeight + 30, 50, CellHeight)];
     label3.backgroundColor = BGColor;
     [label3 setBorderWithTop:NO left:YES bottom:YES right:YES borderColor:LineColor borderWidth:1];
     [BGView addSubview:label3];
     
-    UILabel *label4 = [[UILabel alloc] initWithFrame:CGRectMake(50, 70, itemWidth - 1, CellHeight - 1)];
+    UILabel *label4 = [[UILabel alloc] initWithFrame:CGRectMake(50, CellHeight + 30, itemWidth - 1, CellHeight - 1)];
     label4.backgroundColor = BGColor;
     label4.text = @"每场总帐";
     [label4 setBorderWithTop:NO left:NO bottom:YES right:YES borderColor:LineColor borderWidth:1];
@@ -207,7 +221,7 @@
 //    BGView.backgroundColor = LineColor;
     
     for (int i = 0; i < count; i ++) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(itemWidth * i, 0, itemWidth, 40)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(itemWidth * i, 0, itemWidth, CellHeight)];
         button.tag = 100+i;
         [button addTarget:self action:@selector(exclude:) forControlEvents:UIControlEventTouchUpInside];
         [button setBackgroundImage:[UIImage imageNamed:@"button_bg_3"] forState:UIControlStateNormal];
@@ -222,17 +236,17 @@
         
         [BGView addSubview:button];
         
-        UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, 40, itemWidth, 30)];
+        UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, CellHeight, itemWidth, 30)];
         noLabel.backgroundColor = BlackColor;
         noLabel.text = [NSString stringWithFormat:@"第%d场", i + 1];
         noLabel.textColor = [UIColor whiteColor];
         noLabel.textAlignment = NSTextAlignmentCenter;
         [BGView addSubview:noLabel];
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(itemWidth* i - 1, 40, 1, 30)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(itemWidth* i - 1, CellHeight, 1, 30)];
         line.backgroundColor = LineColor;
         [BGView addSubview:line];
         
-        UILabel *allLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, 70, itemWidth, CellHeight)];
+        UILabel *allLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, CellHeight + 30, itemWidth, CellHeight)];
         allLabel.backgroundColor = BGColor;
         allLabel.textAlignment = NSTextAlignmentCenter;
         if ([[allArray[i] objectForKey:@"hidden"] integerValue] == 0) {
@@ -252,17 +266,17 @@
     
     NSArray *name = @[@"手动更正", @"名字", @"个人总账"];
     for (NSInteger i = count; i < 3 + count; i ++) {
-        UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, 40, itemWidth, 30)];
+        UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, CellHeight, itemWidth, 30)];
         noLabel.backgroundColor = BlackColor;
         noLabel.text = name[i - count];
         noLabel.textColor = [UIColor whiteColor];
         noLabel.textAlignment = NSTextAlignmentCenter;
         [BGView addSubview:noLabel];
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(itemWidth* i - 1, 40, 1, 30)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(itemWidth* i - 1, CellHeight, 1, 30)];
         line.backgroundColor = LineColor;
         [BGView addSubview:line];
         
-        UILabel *allLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, 70, itemWidth, CellHeight)];
+        UILabel *allLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, CellHeight + 30, itemWidth, CellHeight)];
         allLabel.backgroundColor = BGColor;
         allLabel.textAlignment = NSTextAlignmentCenter;
         allLabel.text = allArray[i];
@@ -338,6 +352,7 @@
 }
 
 #pragma mark - 按钮点击事件
+// 排除
 - (void)exclude:(UIButton *)button {
     NSLog(@"%ld",button.tag);
     NSInteger n = button.tag - 100;
@@ -612,5 +627,76 @@
     
 }
 
+
+#pragma mark - 排序按钮
+- (IBAction)sortAction:(UIButton *)sender {
+    index = -1;
+    if (!isSort) {
+        isSort = YES;
+        NSInteger count = contentArray.count;
+        NSMutableArray *sortArray = [NSMutableArray array];
+        for (int i = 0; i < cellMax - 1; i++) {
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+            [dic setObject:everyAllArray[i] forKey:@"everyAll"];
+            [dic setObject:nameArray[i] forKey:@"name"];
+            [dic setObject:updateArray[i] forKey:@"update"];
+            for (int j = 0; j < count; j ++) {
+                [dic setObject:contentArray[j][i] forKey:[NSString stringWithFormat:@"content%d",j]];
+            }
+            [sortArray addObject:dic];
+        }
+        
+        //对数组进行排序
+        
+        NSArray *result = [sortArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            obj1 = [obj1 objectForKey:@"everyAll"];
+            obj2 = [obj2 objectForKey:@"everyAll"];
+            NSLog(@"%@~%@",obj1,obj2); //3~4 2~1 3~1 3~2
+            if ([obj1 hasPrefix:@"+"]) {
+                obj1 = [(NSString *)obj1 stringByReplacingOccurrencesOfString:@"+" withString:@""];
+            }
+            if ([obj2 hasPrefix:@"+"]) {
+                obj2 = [(NSString *)obj2 stringByReplacingOccurrencesOfString:@"+" withString:@""];
+            }
+            
+            if (([obj1 hasPrefix:@"-"]&&[obj2 hasPrefix:@"-"]) || ([obj1 hasPrefix:@"-"]&&[obj2 floatValue] == 0) || ([obj2 hasPrefix:@"-"]&&[obj1 floatValue] == 0)) {
+                return [obj1 compare:obj2]; // 升序
+            }
+            return [obj2 compare:obj1]; //降序
+            
+        }];
+        
+        sortArray = [NSMutableArray arrayWithArray:result];
+        
+        
+        contentArray = [NSMutableArray array];
+        nameArray = [NSMutableArray array];
+        updateArray = [NSMutableArray array];
+        everyAllArray = [NSMutableArray array];
+        for (int i = 0; i < cellMax - 1; i++) {
+            NSDictionary *dic = sortArray[i];
+            [everyAllArray addObject:[dic objectForKey:@"everyAll"]];
+            [nameArray addObject:[dic objectForKey:@"name"]];
+            [updateArray addObject:[dic objectForKey:@"update"]];
+        }
+        for (int j = 0; j < count; j ++) {
+            NSMutableArray *array = [NSMutableArray array];
+            for (int i = 0; i < cellMax - 1; i++) {
+                NSDictionary *dic = sortArray[i];
+                [array addObject:[dic objectForKey:[NSString stringWithFormat:@"content%d",j]]];
+            }
+            [contentArray addObject:array];
+        }
+        
+        
+        [_stockView reloadStockView];
+        NSLog(@"result=%@",result);
+    }else{
+        isSort = NO;
+        [self getData];
+    }
+    
+    
+}
 
 @end

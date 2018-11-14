@@ -96,6 +96,25 @@
     return list;
 }
 
+- (NSMutableArray *)selectTableList:(NSInteger)course {
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    
+    NSString *sql = [NSString stringWithFormat:@"select * from tbl_List where course = %ld order by no desc", course];
+    
+    [self.master inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        FMResultSet *rs = [db executeQuery:sql];
+        
+        while ( [rs next] ) {
+            ListModel *model = [ListModel listModelWithFMResultSet:rs];
+            NSDictionary *dic = [ListModel dictionaryWithListModel:model];
+            [list addObject:dic];
+        }
+        
+        [rs close];
+    }];
+    
+    return list;
+}
 
 - (NSMutableArray *)selectTableList:(NSInteger)course no:(NSInteger)no {
     NSMutableArray *list = [[NSMutableArray alloc] init];

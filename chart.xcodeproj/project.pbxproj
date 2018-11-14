@@ -13,6 +13,11 @@
 		0F17096A217B16F700C652B4 /* AllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F170968217B16F700C652B4 /* AllViewController.m */; };
 		0F17096B217B16F700C652B4 /* AllViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F170969217B16F700C652B4 /* AllViewController.xib */; };
 		0F17096E217B42F200C652B4 /* MoneyResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F17096D217B42F200C652B4 /* MoneyResult.m */; };
+		0F27DB79219431C000FDDF00 /* PCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F27DB77219431C000FDDF00 /* PCTableViewCell.m */; };
+		0F27DB7A219431C000FDDF00 /* PCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F27DB78219431C000FDDF00 /* PCTableViewCell.xib */; };
+		0F27DB7F21943A2500FDDF00 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F27DB7D21943A2500FDDF00 /* UpdateViewController.m */; };
+		0F27DB8021943A2500FDDF00 /* UpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F27DB7E21943A2500FDDF00 /* UpdateViewController.xib */; };
+		0FAFBBAF21946448001F1FDD /* PreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9C3B22188794C0082D994 /* PreViewController.m */; };
 		0FEC0556218AE5DD00B3D29E /* UIView+border.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0555218AE5DD00B3D29E /* UIView+border.m */; };
 		0FF616E3217F11F7005CA1F4 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616E2217F11F7005CA1F4 /* DataManager.m */; };
 		0FF616F2217F1366005CA1F4 /* FMDBManager+Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616E7217F1366005CA1F4 /* FMDBManager+Detail.m */; };
@@ -23,6 +28,10 @@
 		0FF616F7217F1366005CA1F4 /* GCDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616EF217F1366005CA1F4 /* GCDGroup.m */; };
 		0FF616FA217F1448005CA1F4 /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616F9217F1448005CA1F4 /* ListModel.m */; };
 		0FF616FD217F145F005CA1F4 /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF616FB217F145F005CA1F4 /* DetailModel.m */; };
+		0FF693452192F53200FC8E83 /* PreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF693432192F53200FC8E83 /* PreTableViewCell.m */; };
+		0FF693462192F53200FC8E83 /* PreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FF693442192F53200FC8E83 /* PreTableViewCell.xib */; };
+		0FF69A4621953B2B0073A1DB /* UpdateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF69A4421953B2B0073A1DB /* UpdateTableViewCell.m */; };
+		0FF69A4721953B2B0073A1DB /* UpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FF69A4521953B2B0073A1DB /* UpdateTableViewCell.xib */; };
 		0FF6AB7C218D757C0058CD2B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF6AB79218D757B0058CD2B /* LoginViewController.m */; };
 		0FF6AB7D218D757C0058CD2B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FF6AB7A218D757B0058CD2B /* LoginViewController.xib */; };
 		0FF7B115216DE2D700940645 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7B114216DE2D700940645 /* AppDelegate.m */; };
@@ -83,6 +92,12 @@
 		0F170969217B16F700C652B4 /* AllViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllViewController.xib; sourceTree = "<group>"; };
 		0F17096C217B42F200C652B4 /* MoneyResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoneyResult.h; sourceTree = "<group>"; };
 		0F17096D217B42F200C652B4 /* MoneyResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoneyResult.m; sourceTree = "<group>"; };
+		0F27DB76219431C000FDDF00 /* PCTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCTableViewCell.h; sourceTree = "<group>"; };
+		0F27DB77219431C000FDDF00 /* PCTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCTableViewCell.m; sourceTree = "<group>"; };
+		0F27DB78219431C000FDDF00 /* PCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PCTableViewCell.xib; sourceTree = "<group>"; };
+		0F27DB7C21943A2500FDDF00 /* UpdateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateViewController.h; sourceTree = "<group>"; };
+		0F27DB7D21943A2500FDDF00 /* UpdateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateViewController.m; sourceTree = "<group>"; };
+		0F27DB7E21943A2500FDDF00 /* UpdateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateViewController.xib; sourceTree = "<group>"; };
 		0FEC0554218AE5DD00B3D29E /* UIView+border.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+border.h"; sourceTree = "<group>"; };
 		0FEC0555218AE5DD00B3D29E /* UIView+border.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+border.m"; sourceTree = "<group>"; };
 		0FF616E1217F11F7005CA1F4 /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
@@ -103,6 +118,12 @@
 		0FF616F9217F1448005CA1F4 /* ListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListModel.m; sourceTree = "<group>"; };
 		0FF616FB217F145F005CA1F4 /* DetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailModel.m; sourceTree = "<group>"; };
 		0FF616FC217F145F005CA1F4 /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
+		0FF693422192F53200FC8E83 /* PreTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreTableViewCell.h; sourceTree = "<group>"; };
+		0FF693432192F53200FC8E83 /* PreTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreTableViewCell.m; sourceTree = "<group>"; };
+		0FF693442192F53200FC8E83 /* PreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreTableViewCell.xib; sourceTree = "<group>"; };
+		0FF69A4321953B2B0073A1DB /* UpdateTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateTableViewCell.h; sourceTree = "<group>"; };
+		0FF69A4421953B2B0073A1DB /* UpdateTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateTableViewCell.m; sourceTree = "<group>"; };
+		0FF69A4521953B2B0073A1DB /* UpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateTableViewCell.xib; sourceTree = "<group>"; };
 		0FF6AB79218D757B0058CD2B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0FF6AB7A218D757B0058CD2B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0FF6AB7B218D757B0058CD2B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -198,9 +219,9 @@
 		0F0BE62321787CBA006D858F /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				0F0BE62621787CBA006D858F /* NetworkManager+aboutLogin.h */,
 				0F0BE62421787CBA006D858F /* NetworkManager+aboutLogin.m */,
 				0F0BE62521787CBA006D858F /* NetworkManager.h */,
-				0F0BE62621787CBA006D858F /* NetworkManager+aboutLogin.h */,
 				0F0BE62721787CBA006D858F /* NetworkManager.m */,
 			);
 			path = NetWork;
@@ -235,6 +256,17 @@
 				0F170969217B16F700C652B4 /* AllViewController.xib */,
 			);
 			path = AllViewController;
+			sourceTree = "<group>";
+		};
+		0F27DB7B219439F100FDDF00 /* UpdateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0FF69A4221953AA70073A1DB /* View */,
+				0F27DB7C21943A2500FDDF00 /* UpdateViewController.h */,
+				0F27DB7D21943A2500FDDF00 /* UpdateViewController.m */,
+				0F27DB7E21943A2500FDDF00 /* UpdateViewController.xib */,
+			);
+			path = UpdateViewController;
 			sourceTree = "<group>";
 		};
 		0FEC0553218AE59000B3D29E /* UIView */ = {
@@ -284,6 +316,29 @@
 			path = GCDQueue;
 			sourceTree = "<group>";
 		};
+		0FF6933C2192F07F00FC8E83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FF693422192F53200FC8E83 /* PreTableViewCell.h */,
+				0FF693432192F53200FC8E83 /* PreTableViewCell.m */,
+				0FF693442192F53200FC8E83 /* PreTableViewCell.xib */,
+				0F27DB76219431C000FDDF00 /* PCTableViewCell.h */,
+				0F27DB77219431C000FDDF00 /* PCTableViewCell.m */,
+				0F27DB78219431C000FDDF00 /* PCTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0FF69A4221953AA70073A1DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FF69A4321953B2B0073A1DB /* UpdateTableViewCell.h */,
+				0FF69A4421953B2B0073A1DB /* UpdateTableViewCell.m */,
+				0FF69A4521953B2B0073A1DB /* UpdateTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0FF6AB78218D757B0058CD2B /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +379,7 @@
 				0FF6AB78218D757B0058CD2B /* LoginViewController */,
 				0F170966217B16B800C652B4 /* AllViewController */,
 				0FF9C3B0218879160082D994 /* PreViewController */,
+				0F27DB7B219439F100FDDF00 /* UpdateViewController */,
 				0FF88E5B21707D1300D01E49 /* CleanViewController */,
 				0F0BE64221787F4B006D858F /* HomeViewController */,
 				0FF7B113216DE2D700940645 /* AppDelegate.h */,
@@ -412,6 +468,7 @@
 		0FF9C3B0218879160082D994 /* PreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0FF6933C2192F07F00FC8E83 /* View */,
 				0FF9C3B12188794C0082D994 /* PreViewController.h */,
 				0FF9C3B22188794C0082D994 /* PreViewController.m */,
 				0FF9C3B32188794C0082D994 /* PreViewController.xib */,
@@ -572,7 +629,11 @@
 				0FF90F852179D4C2000963C4 /* AllTableViewCell.xib in Resources */,
 				0FF6AB7D218D757C0058CD2B /* LoginViewController.xib in Resources */,
 				0FF7B11D216DE2DA00940645 /* Assets.xcassets in Resources */,
+				0FF693462192F53200FC8E83 /* PreTableViewCell.xib in Resources */,
+				0F27DB8021943A2500FDDF00 /* UpdateViewController.xib in Resources */,
 				0FF7B11B216DE2D700940645 /* Main.storyboard in Resources */,
+				0F27DB7A219431C000FDDF00 /* PCTableViewCell.xib in Resources */,
+				0FF69A4721953B2B0073A1DB /* UpdateTableViewCell.xib in Resources */,
 				0FFDEF3F21742D650017FD15 /* KeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,6 +682,7 @@
 			files = (
 				0FEC0556218AE5DD00B3D29E /* UIView+border.m in Sources */,
 				0FF7B118216DE2D700940645 /* ViewController.m in Sources */,
+				0F27DB79219431C000FDDF00 /* PCTableViewCell.m in Sources */,
 				0FF616F2217F1366005CA1F4 /* FMDBManager+Detail.m in Sources */,
 				0FF88E6A217082BA00D01E49 /* UIControl+XIBLayer.m in Sources */,
 				0F0BE63A21787CBA006D858F /* NetworkManager.m in Sources */,
@@ -644,10 +706,13 @@
 				0FF616F6217F1366005CA1F4 /* GCDQueue.m in Sources */,
 				0FFAC5FB2175CF7600424D5C /* UIView+Xib.m in Sources */,
 				0FF90F7E2179CC0A000963C4 /* HeadView.m in Sources */,
+				0FF69A4621953B2B0073A1DB /* UpdateTableViewCell.m in Sources */,
+				0F27DB7F21943A2500FDDF00 /* UpdateViewController.m in Sources */,
 				0FF616F4217F1366005CA1F4 /* FileManager.m in Sources */,
 				0FF7B115216DE2D700940645 /* AppDelegate.m in Sources */,
 				0F0BE63921787CBA006D858F /* NetworkManager+aboutLogin.m in Sources */,
 				0FF616E3217F11F7005CA1F4 /* DataManager.m in Sources */,
+				0FF693452192F53200FC8E83 /* PreTableViewCell.m in Sources */,
 				0FF88E5F21707EDE00D01E49 /* CleanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FAFBBAF21946448001F1FDD /* PreViewController.m in Sources */,
 				0FF7B12D216DE2DA00940645 /* chartTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

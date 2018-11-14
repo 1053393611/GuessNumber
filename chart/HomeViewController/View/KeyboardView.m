@@ -8,7 +8,9 @@
 
 #import "KeyboardView.h"
 #import "ControlView.h"
+#import <AudioToolbox/AudioToolbox.h>
 
+#define SOUNDID 1306
 #define lableBGColor [UIColor colorWithQuick:244 green:197 blue:196]
 
 @interface KeyboardView(){
@@ -47,9 +49,9 @@
     if ([string containsString:@"/"]) {
         // 有/的情况
         NSArray *strArray = [string componentsSeparatedByString:@"/"];
-//        NSString *firstStr = strArray.firstObject;
+        NSString *firstStr = strArray.firstObject;
         NSString *lastStr = strArray.lastObject;
-        [self moneyStatus:lastStr];
+        [self moneyStatus:lastStr first:firstStr count:strArray.count];
     
     }else {
         [self guessStatus:string];
@@ -105,7 +107,7 @@
 }
 
 
-- (void)moneyStatus:(NSString *)string {
+- (void)moneyStatus:(NSString *)string first:(NSString *)first count:(NSInteger)count{
     [self setButtonGray:13];
     [self setButtonGray:14];
     if ([string isEqualToString:@""]) {
@@ -116,6 +118,10 @@
         // /在中间
         if ([string containsString:@"."]) {
             [self setButtonGray:10];
+            if ([string hasSuffix:@"."] && ([string hasPrefix:@"."] || [string hasPrefix:@"0"])  ) {
+                [self setButtonGray:0];
+            }
+            
             string = [string stringByReplacingOccurrencesOfString:@"." withString:@""];
         }
         
@@ -132,12 +138,33 @@
             self.stringLabel.backgroundColor = [UIColor colorWithSome:220];
         }
         
+        if (string.length >= 0) {
+            if ([first containsString:@"."]) {
+                if (count <= 2) {
+                    [self setButtonWhiter:14];
+                }
+            }
+        }
+        
+        if (string.length >= 0) {
+            if ([first containsString:@">"]) {
+                if (count <= 2) {
+                    [self setButtonWhiter:14];
+                }
+            }
+        }
+        
     }
     
 }
 
 
 #pragma mark - 按钮处理
+// 按键声音
+- (IBAction)buttonPress:(UIButton *)sender {
+    AudioServicesPlaySystemSound(SOUNDID);
+}
+
 - (IBAction)buttonAction:(UIButton *)sender {
     NSInteger index = sender.tag - 200;
     if (index >=0 && index < 10) {
@@ -315,7 +342,7 @@
 
             float thisAll = 0;
             for (int i = 0; i < array.count- 1; i++) {
-                float f = [[MoneyResult defaultInit] getResultWithString:array[i] number:resultNumber];
+                float f =[[self getStringWithNumber:[[MoneyResult defaultInit] getResultWithString:array[i] number:resultNumber]] floatValue] ;
                 resultString = [resultString stringByAppendingFormat:@"%@\n",[self getStringWithNumber:f]];
                 thisAll += f;
             }
@@ -328,7 +355,7 @@
                 if (str.length == 0) {
                     resultString = [resultString stringByAppendingString:@"X"];
                 }else {
-                    float f = [[MoneyResult defaultInit] getResultWithString:s number:resultNumber];
+                    float f = [[self getStringWithNumber:[[MoneyResult defaultInit] getResultWithString:s number:resultNumber]] floatValue];
                     resultString = [resultString stringByAppendingFormat:@"%@",[self getStringWithNumber:f]];
                     thisAll += f;
                 }
@@ -437,7 +464,7 @@
 
 #pragma mark - 数字显示
 - (NSString *)getStringWithNumber:(float)number {
-    int decimalNum = 4; //保留的小数位数
+    int decimalNum = 2; //保留的小数位数
     
     NSNumberFormatter *nFormat = [[NSNumberFormatter alloc] init];
     

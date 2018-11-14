@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [WXApi registerApp:@"wx18f3534b54aed2c8" enableMTA:YES];
+    [WXApi registerApp:@"wxd9a17587890b2620" enableMTA:YES];
     
     FMDatabase *db = [FMDatabase databaseWithPath:[FileManager databaseForMasterPath]];
     [FMDB checkBehaviorTableExist:db];

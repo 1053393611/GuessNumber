@@ -39,6 +39,6 @@
 
 #import "NetworkManager+aboutLogin.h"
 
-#define cellMax 80
+#define cellMax 121
 
 #endif /* PrefixHeader_pch */

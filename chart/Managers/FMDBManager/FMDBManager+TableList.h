@@ -27,6 +27,8 @@
 // 选择
 - (NSMutableArray *)selectTableList;
 
+- (NSMutableArray *)selectTableList:(NSInteger)course;
+
 - (NSMutableArray *)selectTableList:(NSInteger)course no:(NSInteger)no;
 
 // 每一场的结果
