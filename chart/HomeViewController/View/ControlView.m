@@ -517,6 +517,8 @@
         // 没有结果
         bgView.hidden = YES;
         buttn.hidden = NO;
+        bgView.backgroundColor = [UIColor colorWithQuick:247 green:255 blue:246];
+        bgView.layer.borderWidth = 1;
     }else {
         // 有结果
         bgView.backgroundColor = [UIColor clearColor];

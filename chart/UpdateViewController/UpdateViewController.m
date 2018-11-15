@@ -192,6 +192,7 @@
     self.tableHeight.constant = cellHeight * strArray.count + headHeight;
 }
 - (IBAction)backAction:(id)sender {
+    self.reloadTheVC();
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

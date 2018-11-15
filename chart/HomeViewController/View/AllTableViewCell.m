@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *inputLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thisLabel;
+@property (weak, nonatomic) IBOutlet UILabel *positiveLabel;
+@property (weak, nonatomic) IBOutlet UILabel *negativeLabel;
 
 @end
 
@@ -116,6 +118,7 @@
     }else {
         self.allLabel.backgroundColor = [UIColor colorWithQuick:170 green:38 blue:28];
     }
+    [self getPositivieAndNegative];
     
     [dataDic setObject:self.allLabel.text forKey:@"total"];
     [dataDic setObject:self.resultLabel.text forKey:@"result"];
@@ -155,6 +158,7 @@
     }else {
         self.allLabel.backgroundColor = [UIColor colorWithQuick:170 green:38 blue:28];
     }
+    [self getPositivieAndNegative];
     [dataDic setObject:self.allLabel.text forKey:@"total"];
     [dataDic setObject:self.thisLabel.text forKey:@"thisAll"];
     
@@ -164,6 +168,36 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshLabel" object:nil];
 }
 
+//上筒下面 本筒 正的值和负的值的统计
+- (void)getPositivieAndNegative {
+    NSArray *dataArray = [[DataManager defaultManager] getData];
+    float positive = 0;
+    float negative = 0;
+    for (int i = 1; i < cellMax; i++) {
+        NSString *result = [dataArray[i] objectForKey:@"result"];
+        NSString *update = [dataArray[i] objectForKey:@"update"];
+        if ([update floatValue] > 0) {
+            positive += [update floatValue];
+        }else if ([update floatValue] < 0){
+            negative += [update floatValue];
+        }
+        
+        NSArray *array = [result componentsSeparatedByString:@"\n"];
+        for (NSString *str in array) {
+            if (![str isEqualToString:@"X"]) {
+                if ([str floatValue] > 0) {
+                    positive += [str floatValue];
+                }else if ([str floatValue] < 0){
+                    negative += [str floatValue];
+                }
+            }
+        }
+        
+        
+    }
+    self.positiveLabel.text = [self getStringWithNumber:positive];
+    self.negativeLabel.text = [self getStringWithNumber:negative];
+}
 
 
 #pragma mark - 数字显示
@@ -216,6 +250,7 @@
     }else {
         self.thisLabel.backgroundColor = [UIColor colorWithQuick:170 green:38 blue:28];
     }
+    [self getPositivieAndNegative];
 }
 
 @end
