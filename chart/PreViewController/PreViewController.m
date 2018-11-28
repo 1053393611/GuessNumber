@@ -113,7 +113,7 @@
             }
             cell.userInteractionEnabled = NO;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.cellData = detailArray[indexPath.row];
+            cell.cellData = detailArray;
             return cell;
         }
         PCTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"PCell"];

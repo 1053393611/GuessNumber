@@ -72,7 +72,7 @@
                         <action selector="shareAction:" destination="-1" eventType="touchUpInside" id="n6f-v2-6bp"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hV1-oW-EHU">
+                <button opaque="NO" tag="500" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hV1-oW-EHU">
                     <rect key="frame" x="924" y="101" width="80" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="9mJ-qa-rLy"/>

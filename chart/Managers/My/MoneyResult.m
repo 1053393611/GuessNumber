@@ -225,7 +225,15 @@ static MoneyResult* _instance = nil;
         }
         
     }
-    
+    NSString *str =[NSString stringWithFormat:@"%.4f", result];
+    if ([str containsString:@"."] &&![str containsString:@"-"]) {
+        NSArray *array = [str componentsSeparatedByString:@"."];
+        NSString *s = [array.lastObject substringWithRange:NSMakeRange(2, 1)];
+        
+        if ([s isEqualToString:@"1"] || [s isEqualToString:@"2"] || [s isEqualToString:@"3"] || [s isEqualToString:@"4"]) {
+            result = result + 0.01;
+        }
+    }
     
     return result;
     

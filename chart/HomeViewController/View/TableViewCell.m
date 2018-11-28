@@ -339,6 +339,7 @@
         [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:[resultString rangeOfString:@"X"]];
         
     }
+    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17 weight:0.4] range:NSMakeRange(0, string.length)];
     [self.resultTextView setAttributedText:string];
 }
 
@@ -348,7 +349,7 @@
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:textView.text];
     
     [string addAttribute:NSForegroundColorAttributeName value:color range:range];
-    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, textView.text.length)];
+    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17 weight:0.4] range:NSMakeRange(0, textView.text.length)];
     
     [textView setAttributedText:string];
 }

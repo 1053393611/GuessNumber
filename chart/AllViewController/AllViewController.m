@@ -50,6 +50,8 @@
     }];
     
     [self getData];
+    UIButton *button = [self.view viewWithTag:500];
+    [self sortAction:button];
 }
 
 #pragma mark - 返回按钮
@@ -80,6 +82,7 @@
     [BGView addSubview:label1];
 
     UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, itemWidth, CellHeight)];
+    label2.font = [UIFont systemFontOfSize:17 weight:0.5];
     label2.text = nameArray[row];
     label2.adjustsFontSizeToFitWidth = YES;
     label2.textAlignment = NSTextAlignmentCenter;
@@ -98,7 +101,7 @@
     for (int i = 0; i < count; i++) {
         UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(i * itemWidth, 0, itemWidth, CellHeight -1)];
         [label setBorderWithTop:NO left:NO bottom:NO right:YES borderColor:LineColor borderWidth:1];
-        
+        label.font = [UIFont systemFontOfSize:17 weight:0.4];
         label.textAlignment = NSTextAlignmentCenter;
         [BGView addSubview:label];
         if ([[allArray[i] objectForKey:@"hidden"] integerValue] == 0) {
@@ -124,6 +127,7 @@
     
     UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * count, 0, itemWidth, CellHeight)];
     [updateLabel setBorderWithTop:NO left:NO bottom:NO right:YES borderColor:LineColor borderWidth:1];
+    updateLabel.font = [UIFont systemFontOfSize:17 weight:0.4];
     updateLabel.text = updateArray[row];
     if ([updateArray[row] floatValue] >= 0) {
         updateLabel.textColor = Green;
@@ -142,16 +146,18 @@
     
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * (count+1), 0, itemWidth, CellHeight - 1)];
-    [nameLabel setBorderWithTop:NO left:NO bottom:NO right:YES borderColor:LineColor borderWidth:1];
-    nameLabel.backgroundColor = BGColor;
     nameLabel.text = nameArray[row];
+//    [nameLabel setBorderWithTop:NO left:NO bottom:NO right:YES borderColor:LineColor borderWidth:1];
+    nameLabel.backgroundColor = BGColor;
+    nameLabel.font = [UIFont systemFontOfSize:17 weight:0.5];
     nameLabel.adjustsFontSizeToFitWidth = YES;
     nameLabel.textAlignment = NSTextAlignmentCenter;
     [BGView addSubview:nameLabel];
     
     
     UILabel *allLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * (count+2), 0, itemWidth, CellHeight - 1)];
-    [allLabel setBorderWithTop:NO left:NO bottom:NO right:YES borderColor:LineColor borderWidth:1];
+    [allLabel setBorderWithTop:NO left:YES bottom:NO right:YES borderColor:LineColor borderWidth:1];
+    allLabel.font = [UIFont systemFontOfSize:17 weight:0.4];
     allLabel.backgroundColor = BGColor;
     allLabel.text = everyAllArray[row];
     if ([everyAllArray[row] floatValue] >= 0) {
@@ -248,6 +254,7 @@
         
         UILabel *allLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, CellHeight + 30, itemWidth, CellHeight)];
         allLabel.backgroundColor = BGColor;
+        allLabel.font = [UIFont systemFontOfSize:17 weight:0.4];
         allLabel.textAlignment = NSTextAlignmentCenter;
         if ([[allArray[i] objectForKey:@"hidden"] integerValue] == 0) {
             allLabel.text = [allArray[i] objectForKey:@"total"];
@@ -279,6 +286,7 @@
         UILabel *allLabel = [[UILabel alloc] initWithFrame:CGRectMake(itemWidth * i, CellHeight + 30, itemWidth, CellHeight)];
         allLabel.backgroundColor = BGColor;
         allLabel.textAlignment = NSTextAlignmentCenter;
+        allLabel.font = [UIFont systemFontOfSize:17 weight:0.4];
         allLabel.text = allArray[i];
         [allLabel setBorderWithTop:NO left:NO bottom:YES right:YES borderColor:LineColor borderWidth:1];
         if (i == count) {
@@ -651,18 +659,18 @@
         NSArray *result = [sortArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
             obj1 = [obj1 objectForKey:@"everyAll"];
             obj2 = [obj2 objectForKey:@"everyAll"];
-            NSLog(@"%@~%@",obj1,obj2); //3~4 2~1 3~1 3~2
+//            NSLog(@"%@~%@",obj1,obj2); //3~4 2~1 3~1 3~2
             if ([obj1 hasPrefix:@"+"]) {
                 obj1 = [(NSString *)obj1 stringByReplacingOccurrencesOfString:@"+" withString:@""];
             }
             if ([obj2 hasPrefix:@"+"]) {
                 obj2 = [(NSString *)obj2 stringByReplacingOccurrencesOfString:@"+" withString:@""];
             }
-            
+            NSLog(@"%@~%@",obj1,obj2);
             if (([obj1 hasPrefix:@"-"]&&[obj2 hasPrefix:@"-"]) || ([obj1 hasPrefix:@"-"]&&[obj2 floatValue] == 0) || ([obj2 hasPrefix:@"-"]&&[obj1 floatValue] == 0)) {
-                return [obj1 compare:obj2]; // 升序
+                return [obj1 compare:obj2 options:NSNumericSearch]; // 升序
             }
-            return [obj2 compare:obj1]; //降序
+            return [obj2 compare:obj1 options:NSNumericSearch]; //降序
             
         }];
         
@@ -690,7 +698,7 @@
         
         
         [_stockView reloadStockView];
-        NSLog(@"result=%@",result);
+//        NSLog(@"result=%@",result);
     }else{
         isSort = NO;
         [self getData];

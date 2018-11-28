@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PreTableViewCell : UITableViewCell
 
-@property (copy, nonatomic) NSDictionary *cellData;
+@property (copy, nonatomic) NSArray *cellData;
 
 @end
 

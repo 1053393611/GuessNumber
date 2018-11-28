@@ -113,7 +113,7 @@
         make.left.mas_equalTo(self->rightView.mas_left).offset(10);
         make.height.mas_equalTo(30);
     }];
-    
+    rightView.hidden = YES;
 }
 
 
