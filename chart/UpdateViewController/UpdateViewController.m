@@ -205,8 +205,40 @@
     }else {
         [self refreshResult:0];
     }
+    [self refreshInput];
     self.reloadTheVC();
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// 投入
+- (void)refreshInput {
+    
+    float all = 0;
+    NSArray *dataArray = self.dataArray;
+    for (int i = 1; i < cellMax; i++) {
+        NSString *str = [dataArray[i] objectForKey:@"input"];
+        float thisAll = 0;
+        NSArray *array = [str componentsSeparatedByString:@"\n"];
+        for (NSString *string in array) {
+            if ([string containsString:@"/"]) {
+                NSArray *a = [string componentsSeparatedByString:@"/"];
+                NSString *s = a.lastObject;
+                thisAll += [s floatValue];
+                if (a.count == 3) {
+                    NSString *s = a[1];
+                    thisAll += [s floatValue];
+                }
+            }
+        }
+        all += thisAll;
+    }
+    
+    NSMutableDictionary *allDic = self.dataArray.firstObject;
+    [allDic setObject:[self getInputStringWithNumber:all/10] forKey:@"input"];
+    
+    ListModel *listModel = [ListModel listModelWithDictionary:allDic];
+    [FMDB updateTableList:listModel];
+    
 }
 
 - (void)refreshResult:(NSInteger)resultNumber{
@@ -380,6 +412,19 @@
     if (number > 0) {
         string = [NSString stringWithFormat:@"+%@", string];
     }
+    return string;
+}
+
+- (NSString *)getInputStringWithNumber:(float)number {
+    int decimalNum = 2; //保留的小数位数
+    
+    NSNumberFormatter *nFormat = [[NSNumberFormatter alloc] init];
+    
+    [nFormat setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    [nFormat setMaximumFractionDigits:decimalNum];
+    
+    NSString *string = [nFormat stringFromNumber:@(number)];
     return string;
 }
 

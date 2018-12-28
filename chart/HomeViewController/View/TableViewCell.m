@@ -170,9 +170,8 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     for (UIWindow *window in [[UIApplication sharedApplication] windows] ) {
         if ([[window description] hasPrefix:@"<UIRemoteKeyboardWindow"] == YES) {
-            UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:2];
-            tempWindow.hidden = YES;
-            [tempWindow setAlpha:0];
+            window.hidden = YES;
+            [window setAlpha:0];
         }
     }
     

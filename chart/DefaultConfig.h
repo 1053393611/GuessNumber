@@ -43,7 +43,12 @@
 
 
 //  当前设备是否是 iPhoneX
-#define iPhoneX                 ( HBScreenHeight == 812.f )
+#define iPhone_X \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
 
 #define Font(float) [UIFont fontWithName:@"Helvetica" size:float]
 #define BoldFont(float) [UIFont boldSystemFontOfSize:float]
